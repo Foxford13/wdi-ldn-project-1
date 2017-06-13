@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>WDI Project 2</title>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+  <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+<script src="https://npmcdn.com/bootstrap@4.0.0-alpha.5/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+  <%# google maps link%>
+      <script src="/js/app.js" charset="utf-8"></script>
+    <script src="/js/map.js" charset="utf-8"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmku-0JwPZL_7NMRpFrMl5RU7osoQ73p8"></script>
+
+
+  <link rel="stylesheet" href="/css/style.css">
+
+
+
+
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="container">
+        <li><a href="/">Home</a></li>
+        <li><a href="/books">Books</a></li>
+
+          <% if (locals.isLoggedIn) { %>
+
+            <li>
+            <a href="/books/new">Add a Book</a>
+            </li>
+              <li>
+              <a href="/books/new">Add a Marker</a>
+              </li>
+              <li >
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+          <% } else { %>
+            <li >
+              <a class="nav-link" href="/login">Log In</a>
+            </li>
+            <li>
+              <a class="nav-link" href="/register">Register</a>
+            </li>
+          <% } %>
+
+      </ul>
+    </nav>
+  </header>
+  <main class="container">
+    <%- body %>
+  </main>
+
+</body>
+</html>

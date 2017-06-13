@@ -1,0 +1,29 @@
+<h3> Where's my book at?</h3>
+<div class="row">
+  <div class="show-image"><img src="<%= book.image %>"></div>
+  <div class="book-info col-lg-6">
+  <h2 data-title="<%= JSON.stringify({title: book.title} ) %>"><%= book.title %></h2>
+  <h2><%= book.author %></h2>
+  <p><%= book.description %></p>
+</div>
+  <div class="col-sm-12">
+    <h4> Its current location <br>
+      and how to get there.
+    </h4>
+
+    <p><%= book.locationDesc %></p>
+
+    <div id="map" data-lat="51.515113" data-lng="-0.072051"></div>
+    <div>
+      <% if (locals.isLoggedIn) { %>
+
+        <a href="/books/<%= book.id %>/edit" class="button">Edit/Replace</a>
+        <form action="/books/<%= book.id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE"/>
+        <button class="button button-primary">Delete</button>
+        <% } %>
+
+      </div>
+    </div>
+  </div>
+</div>
