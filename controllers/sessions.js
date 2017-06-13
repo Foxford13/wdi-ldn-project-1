@@ -11,6 +11,7 @@ function sessionsCreate(req, res) {
   .then((user) => {
     if(!user || !user.validatePassword(req.body.password)) {
       return res.status(401).render('sessions/new', {message: 'Unrecognised Credentials'});
+      // return res.unauthorized('/login', 'Unknown credentials');
     }
     req.session.userId = user.id;
     return res.redirect('/');

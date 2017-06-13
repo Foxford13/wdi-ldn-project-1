@@ -16,7 +16,21 @@ function registrationsCreate(req, res) {
     });
 }
 
+function registrationsShow(req, res) {
+  return res.render('registrations/show');
+}
+function registrationsDelete(req, res, next) {
+  req.user
+    .remove()
+    .then(() => {
+      req.session.regenerate(() => res.unauthorized('/', 'Your account has been deleted'));
+    })
+    .catch(next);
+}
+
 module.exports = {
   new: registrationsNew,
-  create: registrationsCreate
+  create: registrationsCreate,
+  show: registrationsShow,
+  delete: registrationsDelete
 };
