@@ -13,18 +13,27 @@ commentSchema.methods.belongsTo = function commentBelongsTo(user) {
   return user.id === this.createdBy.toString();
 };
 
-//const location schema
+const locationSchema = new mongoose.Schema({
+  lat: { Number},
+  lng: { Number}
+},{
+  timestamps: true
+});
+
+
+
+
 const bookSchema = new mongoose.Schema({
   image: {type: String},
   title: { type: String, required: true },
   author: { type: String, required: true },
   description: { type: String },
   locationDesc: {type: String},
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
-  // locations : [locationsSchema],
-  // comments: [ commentSchema ],
-  // googleBookId: { type: string}
-  //location [{la and long}]
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  locations: [locationSchema],
+  comments: [ commentSchema ],
+  googleBookId: { type: String}
+
 });
 
 
