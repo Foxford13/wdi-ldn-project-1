@@ -32,10 +32,11 @@ router.route('/books/:id/edit')
 .get(secureRoute, bookController.edit);
 
 
+router.route('/profile')
+.get(secureRoute, registrations.show);
 
-
-
-
+router.route('/profile')
+.delete(secureRoute, registrations.delete);
 
 
 router.route('/register')
@@ -48,6 +49,14 @@ router.route('/login')
 
 router.route('/logout')
 .get(sessions.delete);
+
+router.route('/books/:id/comments')
+.post(secureRoute, bookController.createComment);
+
+router.route('/books/:id/comments/:commentId')
+.delete(secureRoute, bookController.deleteComment);
+
+
 
 
 

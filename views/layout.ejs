@@ -35,13 +35,16 @@
         <li><a href="/">Home</a></li>
         <li><a href="/books">Books</a></li>
 
-          <% if (locals.isLoggedIn) { %>
+          <% if (locals.isAuthenticated) { %>
 
             <li>
             <a href="/books/new">Add a Book</a>
             </li>
               <li>
               <a href="/books/new">Add a Marker</a>
+              </li>
+              <li >
+                <a class="nav-link" href="/profile">Profile</a>
               </li>
               <li >
                 <a class="nav-link" href="/logout">Logout</a>

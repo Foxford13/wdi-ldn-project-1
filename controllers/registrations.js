@@ -6,14 +6,14 @@ function registrationsNew(req, res) {
 
 function registrationsCreate(req, res) {
   User
-    .create(req.body)
-    .then(() => res.redirect('/login'))
-    .catch((err) => {
-      if (err.name === 'ValidationError') {
-        return res.status(400).render('registrations/new', { message: 'Passwords do not match' });
-      }
-      res.status(500).end();
-    });
+  .create(req.body)
+  .then(() => res.redirect('/login'))
+  .catch((err) => {
+    if (err.name === 'ValidationError') {
+      return res.status(400).render('registrations/new', { message: 'Passwords do not match' });
+    }
+    res.status(500).end();
+  });
 }
 
 function registrationsShow(req, res) {
@@ -21,11 +21,11 @@ function registrationsShow(req, res) {
 }
 function registrationsDelete(req, res, next) {
   req.user
-    .remove()
-    .then(() => {
-      req.session.regenerate(() => res.unauthorized('/', 'Your account has been deleted'));
-    })
-    .catch(next);
+  .remove()
+  .then(() => {
+    req.session.regenerate(() => res.unauthorized('/', 'Your account has been deleted'));
+  })
+  .catch(next);
 }
 
 module.exports = {

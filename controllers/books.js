@@ -3,13 +3,16 @@ const Book = require('../models/book');
 
 
 function booksIndex(req, res, next) {
+
   Book
   .find()
+  .populate('createdBy')
   .then((books) => res.render('books/index', {books}))
   .catch(next);
 
 }
 function booksCreate(req, res) {
+  req.body.createdBy = req.user;
   Book
   .create(req.body)
   .then(() => {
@@ -28,6 +31,7 @@ function booksNew(req, res) {
 function booksShow(req, res) {
   Book
   .findById(req.params.id)
+  .populate('createdBy comments.createdBy')
   .exec()
   .then((book) => {
     if(!book) return res.status(404).end('Not Found');
@@ -39,13 +43,15 @@ function booksShow(req, res) {
   console.log(`${req.query.title}`);
 
 }
+
 function booksEdit(req, res) {
   Book
   .findById(req.params.id)
   .exec()
   .then((book) => {
-    if(!book) return res.status(404).end('Not found');
-    res.render('books/edit', {book});
+    if(!book) return res.redirect();
+    if(!book.belongsTo(req.user)) return res.unauthorized(`/books/${book.id}`, 'You do not have permission to edit that resource');
+    return res.render('books/edit', { book });
   })
   .catch((err) => {
     res.status(500).render('error', {err});
@@ -88,7 +94,38 @@ function booksDelete(req, res) {
   });
 
 }
+function createCommentRoute(req, res, next) {
 
+  req.body.createdBy = req.user;
+
+  Book
+  .findById(req.params.id)
+  .exec()
+  .then((book) => {
+    if(!book) return res.notFound();
+
+    book.comments.push(req.body); // create an embedded record
+    return book.save();
+  })
+  .then((book) => res.redirect(`/books/${book.id}`))
+  .catch(next);
+}
+
+function deleteCommentRoute(req, res, next) {
+  Book
+  .findById(req.params.id)
+  .exec()
+  .then((book) => {
+    if(!book) return res.notFound();
+    // get the embedded record by it's id
+    const comment = book.comments.id(req.params.commentId);
+    comment.remove();
+
+    return book.save();
+  })
+  .then((book) => res.redirect(`/books/${book.id}`))
+  .catch(next);
+}
 
 
 
@@ -103,7 +140,9 @@ module.exports = {
   show: booksShow,
   update: booksUpdate,
   edit: booksEdit,
-  delete: booksDelete
+  delete: booksDelete,
+  createComment: createCommentRoute,
+  deleteComment: deleteCommentRoute
 
 
 };
