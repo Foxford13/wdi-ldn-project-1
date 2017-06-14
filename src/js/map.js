@@ -42,8 +42,8 @@ $(() => {
       $('[name=lat]').val(location.lat);
       $('[name=lng]').val(location.lng);
 
-      // console.log(e.target);
-      e.target.submit();
+      console.log(location.lat);
+      // e.target.submit();
     });
 
 

@@ -68,7 +68,7 @@ function booksEdit(req, res) {
 
 function booksUpdate(req, res) {
   console.log(req.body);
-  
+
   Book
   .findById(req.params.id)
   .exec()

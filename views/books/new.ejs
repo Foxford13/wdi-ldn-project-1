@@ -2,7 +2,12 @@
   <div class="page-title"><h2>Assign your book to a new location</h2></div>
   <div id="add-exp"><h4>Type in the book info manually or find it in our database to assign it automatically</h4></div>
   <div class="col-md-5">
-    <form class="six columns edit-form" method="POST" action="/books">
+    <form class="edit-form" method="POST" action="/books">
+      
+      <input type="hidden" name="lat">
+      <input type="hidden" name="lng">
+      <input type="hidden" name="googleBookId">
+
       <div class="new-form">
         <label for="image">Image</label>
         <input class="u-full-width" type="text" name="image" id="image">
@@ -27,9 +32,7 @@
         <textarea class="u-full-width" name="locationDesc"></textarea>
       </div>
 
-      <input type="hidden" name="lat">
-      <input type="hidden" name="lng">
-      <input type="hidden" name="googleBookId">
+
 
 
       <button class="button-primary u-full-width create-man">Create</button>
