@@ -1,9 +1,6 @@
-
-
-
 <div class="row">
   <div class="page-title"><h2>Assign your book to a new location</h2></div>
-  <div id="add-exp"><h4>Type in the book or find it in our database to assign it automatically</h4></div>
+  <div id="add-exp"><h4>Type in the book info manually or find it in our database to assign it automatically</h4></div>
   <div class="col-md-5">
     <form class="six columns" method="POST" action="/books">
       <div class="new-form">
@@ -29,20 +26,17 @@
         <label for="location-description">Wheres at?</label>
         <textarea class="u-full-width" name="locationDesc"></textarea>
       </div>
-      <div class="new-form">
-        <label for="locations">Locations</label>
-        <input class="u-full-width" type="text" name="locations" id="locations">
-      </div>
-      <div class="new-form">
-        <label for="google-id">googleBookId</label>
-        <textarea class="u-full-width" name="google-id" id="google-id"></textarea>
-      </div>
+
+      <input type="hidden" name="lat">
+      <input type="hidden" name="lng">
+      <input type="hidden" name="googleBookId">
 
 
       <button class="button-primary u-full-width create-man">Create</button>
 
 
     </form>
+
   </div>
   <div class="col-md-4">
     <form class="new-form">
@@ -53,11 +47,10 @@
     </form>
     <div class="book-results"></div>
   </div>
-
-</div>
-
-<div class="row">
-  <div class="col-lg-4" >
-    <div id="map" data-lat="51.515113" data-lng="-0.072051"></div>
+  <div class="row">
+    <div class="col-lg-4">
+      <div id="map" data-lat="51.515113" data-lng="-0.072051" class="marker"></div>
+    </div>
   </div>
+
 </div>

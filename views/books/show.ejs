@@ -1,53 +1,55 @@
 <h3> Where's my book at?</h3>
-<div class="row">
-  <div class="show-image"><img src="<%= book.image %>"></div>
-  <div class="book-info col-lg-6">
-  <h2 data-title="<%= JSON.stringify({title: book.title} ) %>"><%= book.title %></h2>
+
+<div class="show-image"><img src="<%= book.image %>"></div>
+<div class="book-info col-lg-6">
+  <h2 data-title="<%= JSON.stringify({title: book.title} ) %>" data-location="<%= JSON.stringify({ lat: book.locations[book.locations.length - 1].lat, lng: book.locations[book.locations.length - 1].lng }) %>"><%= book.title %></h2>
   <h2><%= book.author %></h2>
   <p><%= book.description %></p>
   <p><%= book.createdBy.username %></p>
+
+
 </div>
-  <div class="col-sm-12">
-    <h4> Its current location <br>
-      and how to get there.
-    </h4>
+<% for (var i = 0; i < book.locations.length; i++){ %>
+<p><%= `${book.locations[i].lat}` %></p>
+<p><%= `${book.locations[i].lng}` %></p>
 
-    <p><%= book.locationDesc %></p>
+  <% }; %>
 
-    <div id="map" data-lat="30.515113" data-lng="-0.072051"></div>
-    <div>
-      <% if(locals.isAuthenticated && book.belongsTo(user)) { %>
-      <a href="/books/<%= book.id %>/edit">Edit</a>
-      <form method="POST" action="/books/<%= book.id %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <button>Delete</button>
-      </form>
-    <% } %>
-    <% if(locals.isAuthenticated) { %>
-  <section>
+<h4> Its current location <br>
+  and how to get there.
+</h4>
+
+<p><%= book.locationDesc %></p>
+
+<div id="map" data-lat="51.515113" data-lng="-0.072051"></div>
+
+<% if(locals.isAuthenticated && book.belongsTo(user)) { %>
+  <a href="/books/<%= book.id %>/edit">Update</a>
+  <form method="POST" action="/books/<%= book.id %>">
+  <input type="hidden" name="_method" value="DELETE">
+  <button>Delete</button>
+  </form>
+  <% } %>
+  <% if(locals.isAuthenticated) { %>
+    <section>
     <h4>Leave a comment</h4>
     <form method="POST" action="/books/<%= book.id %>/comments">
-      <textarea name="content" id="content" placeholder="Comment"></textarea>
-      <button class="button">Leave a comment</button>
+    <textarea name="content" id="content" placeholder="Comment"></textarea>
+    <button class="button">Leave a comment</button>
     </form>
-  </section>
-<% } %>
-<section>
-  <h4>Comments</h4>
-  <% book.comments.forEach((comment) => { %>
-    <p><%= comment.content %></p>
-    <small><%= comment.createdBy.username %></small>
-
-    <% if(locals.isAuthenticated && comment.belongsTo(user)) { %>
-      <form method="POST" action="/books/<%= book.id %>/comments/<%= comment.id %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <button>Delete</button>
-      </form>
+    </section>
     <% } %>
-  <% }) %>
-</section>
+    <section>
+      <h4>Comments</h4>
+      <% book.comments.forEach((comment) => { %>
+        <p><%= comment.content %></p>
+        <small><%= comment.createdBy.username %></small>
 
-      </div>
-    </div>
-  </div>
-</div>
+        <% if(locals.isAuthenticated && comment.belongsTo(user)) { %>
+          <form method="POST" action="/books/<%= book.id %>/comments/<%= comment.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button>Delete</button>
+          </form>
+          <% } %>
+          <% }) %>
+    </section>

@@ -2,17 +2,17 @@
 
 <h1>Index</h1>
 <div class="row">
-  <div class="col-lg-4">
 
   <ul class="row index-page">
     <% books.forEach((book) => { %>
+      <div class="col-lg-3 index-books">
       <li class="six columns">
-      <div><img src="<%= book.image %>"></div>
+      <div class="index-image">  <a href="/books/<%= book.id %>"><img src="<%= book.image %>"></a></div>
       <a href="/books/<%= book.id %>"><h3><%= book.title %></h3></a>
       <h4><%= book.author %></h4>
-      <p><%= book.description %></p>
-      <p><%= book.locationDesc %></p>
-      
+
+      </div>
+
 
 
       </li>

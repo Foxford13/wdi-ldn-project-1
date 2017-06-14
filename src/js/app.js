@@ -8,7 +8,7 @@ $(() => {
   // console.log(title);
 
   $results.on('click', 'button', function() {
-    console.log($(this).data('description'));
+
 
     $('#image').val($(this).data('image'));
     $('#title').val($(this).data('title'));
@@ -60,7 +60,7 @@ $(() => {
 
       if(!$(this).is('.book-results')) {
         emptyBooks();
-        console.log(searchInput);
+
       }
       // $.get(`/booksproxy${+}?q=${searchInput}`)
       $.get(`/booksproxy?q=${searchInput}`)
@@ -71,13 +71,6 @@ $(() => {
       $results.empty();
     }
 
-
-
-    // function workNow() {
-    //   return console.log('nooo');
-    // }
-    //
-    // $('button').on('click', workNow);
 
 
 

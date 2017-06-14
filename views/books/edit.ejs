@@ -1,44 +1,35 @@
 <h1>Edit</h1>
 <div class="row">
-  <form method="POST" action="/books/<%= book.id %>">
+
+  <h2 data-title="<%= JSON.stringify({title: book.title} ) %>" data-location="<%= JSON.stringify({lat: book.locations[book.locations.length - 1].lat, lng: book.locations[book.locations.length - 1].lng } ) %>"></h2>
+
+
+  <div class="col-lg-6">
+    <img src="<%= book.image %>">
+    <h2><%= book.author %></h2>
+    <p><%= book.description %></p>
+    <p><%= book.createdBy.username %></p>
+  </div>
+  <form class="editForm" method="POST" action="/books/<%= book.id %>">
     <input type="hidden" name="_method" value="PUT">
 
-    <div class="new-form">
-      <label for="image">Image</label>
-      <input class="u-full-width" type="text" name="image" id="image" value="<%= book.image %>">
-    </div>
-    <div class="new-form">
-      <label for="title"> Title </label>
-      <input type="text" name="title"  id="title" value="<%= book.title %>">
-    </div>
+    <label for="locationDesc"> Location Description</label>
+    <textarea class="u-full-width" name="locationDesc"></textarea>
 
-    <div class="new-form">
-      <label for="author"> Author</label>
-      <input type="text" name="author"  id="author" value="<%= book.author %>">
-    </div>
-    <div class="new-form">
-      <label for="description"> Description</label>
-      <input type="text" name="description"  id="description" value="<%= book.description%>">
-    </div>
-    <div class="new-form">
-      <label for="locationDesc"> Location Description</label>
-      <textarea class="u-full-width" name="locationDesc"></textarea>
-    </div>
-    <button class="u-full-width button-primary">Create</button>
+    <input type="hidden" name="lat">
+    <input type="hidden" name="lng">
+    <input type="hidden" name="googleBookId">
+    <button class="u-full-width button-primary">Update</button>
+
   </form>
 
-  <div class="col-md-4">
-    <form class="new-form">
-      <label>Search Books</label>
-      <input type="text" name="q" value="<%= book.title %>" placeholder="search books">
 
-      <input type="submit" value="Go!">
-    </form>
-    <div class="book-results"></div>
+  <div class="row">
+    <div class="col-lg-4" >
+  <div id="map" data-lat="51.515113" data-lng="-0.072051" class="marker"></div>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-lg-4" >
-    <div id="map" data-lat="51.515113" data-lng="-0.072051"></div>
-  </div>
+
+
+
 </div>

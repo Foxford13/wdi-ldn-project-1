@@ -20,13 +20,6 @@ form {
 
 }
 
-#map {
-  height: 300px;
-  width: 300px;
-  float: left;
-  margin-bottom: 20px;
-
-}
 
 nav {
   background-color: #ccc;
@@ -58,18 +51,27 @@ nav {
 }
 
 
+ul {
+  list-style-type: none;
+
+  .index-page {
+    display: inline;
+
+    .index-books {
+      float:right;
+      height: 300px;
 
 
-.index-page {
-  display: inline;
 
 
+    }
 
-  img{
-    max-height: 200px;
   }
-}
 
+}
+.index-image {
+  height: 200px;
+}
 
 .show-image img {
   max-height: 300px;
@@ -89,7 +91,15 @@ nav {
   color: rgba(0, 0, 0, 0.4);
 }
 .new-form {
-margin-bottom: 20px;
+  margin-bottom: 20px;
 
+
+}
+
+#map {
+  height: 300px;
+  width: 300px;
+  float: left;
+  margin-bottom: 20px;
 
 }

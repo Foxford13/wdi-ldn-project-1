@@ -4,6 +4,11 @@ const Book = require('../models/book');
 
 function booksIndex(req, res, next) {
 
+  // Book
+  // .aggregate([{ $group: { _id: '$googleBookId' } }, { $project: { title: '$title' } }])
+  // .exec()
+  // .then((books) => console.log(books));
+
   Book
   .find()
   .populate('createdBy')
@@ -13,6 +18,7 @@ function booksIndex(req, res, next) {
 }
 function booksCreate(req, res) {
   req.body.createdBy = req.user;
+
   Book
   .create(req.body)
   .then(() => {
@@ -40,7 +46,7 @@ function booksShow(req, res) {
   .catch((err) => {
     res.status(500).render('error', { err });
   });
-  console.log(`${req.query.title}`);
+
 
 }
 
@@ -50,7 +56,7 @@ function booksEdit(req, res) {
   .exec()
   .then((book) => {
     if(!book) return res.redirect();
-    if(!book.belongsTo(req.user)) return res.unauthorized(`/books/${book.id}`, 'You do not have permission to edit that resource');
+    // if(!book.belongsTo(req.user)) return res.unauthorized(`/books/${book.id}`, 'You do not have permission to edit that resource');
     return res.render('books/edit', { book });
   })
   .catch((err) => {
@@ -61,6 +67,8 @@ function booksEdit(req, res) {
 
 
 function booksUpdate(req, res) {
+  console.log(req.body);
+  
   Book
   .findById(req.params.id)
   .exec()

@@ -3,75 +3,52 @@
 
 $(() => {
 
+  const $map = $('#map');
 
-
-
-  var map, infoWindow;
+  let map, marker;
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 51.5074, lng: 0.1278},
+      center: { lat: $map.data('lat'), lng: $map.data('lng') },
       zoom: 6
     });
-    infoWindow = new google.maps.InfoWindow;
 
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
 
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('Your location was found.');
-        infoWindow.open(map);
-        map.setCenter(pos);
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
+    const customMarkerLocation = $('h2').data('location');
+
+    marker = new google.maps.Marker({ map,
+      position: customMarkerLocation
+    });
+
+
+
   }
-
-  // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  //   infoWindow.setPosition(pos);
-  //   infoWindow.setContent(browserHasGeolocation ?
-  //     'Error: The Geolocation service failed.' :
-  //     'Error: Your browser doesn\'t support geolocation.');
-  //     infoWindow.open(map);
-  //   }
 
   initMap();
 
-
-  google.maps.event.addListener(map, 'click', function(event) {
-    placeMarker(event.latLng);
-
-  });
-
-  function placeMarker(location) {
-    var marker = new google.maps.Marker({
-      position: location,
-      map: map
-    });
+  if($('[data-location]').length > 0) {
+    const location = $('[data-location]').data('location');
+    marker.setPosition(location);
+    map.setCenter(location);
   }
-  map.addListener('click', (e)=> console.log(e.latLng.toJSON()));
 
-  map.addListener('click', (e)=>   $('#locations').val(e.latLng));
+  if($map.hasClass('marker')) {
+    map.addListener('click', (e) => marker.setPosition(e.latLng));
+
+    $('.editForm').on('submit', (e) => {
+      e.preventDefault();
+
+      const location = marker.getPosition().toJSON();
+      console.log('location of new marker', location);
+      $('[name=lat]').val(location.lat);
+      $('[name=lng]').val(location.lng);
+
+      // console.log(e.target);
+      e.target.submit();
+    });
 
 
 
-
-
-
-
-
-
-
-
-
+  }
 
 
 });
