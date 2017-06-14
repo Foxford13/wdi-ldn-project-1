@@ -9,12 +9,13 @@
 
 
 </div>
+<div class="coordinates">
 <% for (var i = 0; i < book.locations.length; i++){ %>
-<p><%= `${book.locations[i].lat}` %></p>
-<p><%= `${book.locations[i].lng}` %></p>
+<p id="google-lat"><%= `${book.locations[i].lat}` %></p>
+<p id="google-lng"><%= `${book.locations[i].lng}` %></p>
 
   <% }; %>
-
+</div>
 <h4> Its current location <br>
   and how to get there.
 </h4>

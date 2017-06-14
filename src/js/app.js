@@ -29,6 +29,28 @@ $(() => {
     console.log(response);
   });
 
+
+  const $googleLng = $('#google-lng').text();
+  const $googleLat = $('#google-lat').text();
+
+
+
+
+
+
+
+  $.ajax({
+
+    url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=51.5074,0.1278&key=AIzaSyD_4S64vxXlmpR2d47IEgHCj0HYPbT6p9c`,
+    method: 'GET',
+    data: title,
+    json: true
+  })
+
+  .done((response)  => {
+    console.log(response);
+  });
+
   ///////////QUESTIONABLE DONT BE AFRAID TO Delete
 
   $('.new-form').on('submit', getBooks);
@@ -75,7 +97,9 @@ $(() => {
 
 
 
-
+    $('.coordinates').each((e) => {
+      console.log(e.$googleLng);
+    });
 
 
 
