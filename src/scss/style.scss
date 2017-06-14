@@ -1,8 +1,12 @@
-footer {
-  height: 150px;
-  background-color: rgba(0, 0, 0, 0.2);
-  margin-bottom: 0px;
+body {
+font-family: 'Acme', sans-serif;
+  background-image:  url('http://www.onlygfx.com/wp-content/uploads/2016/06/simple-old-white-paper-1.jpg'),;
+
+  background-size: cover;
+
+
 }
+
 
 form {
 
@@ -22,30 +26,43 @@ form {
 
 
 nav {
-  background-color: #ccc;
+  background-color: black;
   height: 40px;
   margin-bottom: 30px;
+  padding-right: 3%;
   ul {
     margin: 0;
     li {
       display: inline-block;
-      margin: 0;
+      margin-left: 15px;
       line-height: 40px;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       font-weight: bold;
+
       a {
-        color: #404040;
+        color: white;
         text-decoration: none;
-        margin-right: 15px;
+
+        margin: 0px;
         transition: 0.2s ease;
+
         &:focus, &:hover {
           color: lighten(#404040, 10%);
         }
+
+
       }
     }
+    li:nth-child(3){
+      float: right;
+    }
+    li:nth-child(4){
+      float: right;
+    }
     li:hover {
-      background-color: rgba(200, 30, 30, 0.5);
+      background-color: white;
+
     }
   }
 }
@@ -57,26 +74,26 @@ ul {
   .index-page {
     display: inline;
 
-    .index-books {
-      float:right;
-      height: 300px;
 
-
-
-
-    }
 
   }
 
-}
-.index-image {
-  height: 200px;
 }
 
 .show-image img {
   max-height: 300px;
   margin-bottom: 50px;
 }
+.index-books {
+  padding-left: 5%;
+  float:left;
+  height: 300px;
+
+
+}
+
+
+
 .book-results {
   height: 300px;
   width: 300px;
@@ -102,4 +119,31 @@ ul {
   float: left;
   margin-bottom: 20px;
 
+}
+
+footer {
+  background-color: rgba(0, 0, 0, 0.2);
+
+}
+.show-row {
+  padding-top: 5%;
+  padding-left: 5%;
+  p {
+    max-width: 90%;
+  }
+}
+.map-show {
+  margin-left: 10%;
+}
+.index-image {
+  max-height: 200px;
+
+}
+.comment-box-main {
+margin-left: 25%;
+button {
+  clear: both;
+ display: block;
+  border:none;
+}
 }

@@ -1,15 +1,24 @@
-<h1>Edit</h1>
+<h1>Change the location of the book</h1>
 <div class="row">
 
   <h2 data-title="<%= JSON.stringify({title: book.title} ) %>" data-location="<%= JSON.stringify({lat: book.locations[book.locations.length - 1].lat, lng: book.locations[book.locations.length - 1].lng } ) %>"></h2>
 
-
-  <div class="col-lg-6">
+  <div class="row show-row">
+    <div class="show-image">
     <img src="<%= book.image %>">
-    <h2><%= book.author %></h2>
-    <p><%= book.description %></p>
-    <p><%= book.createdBy.username %></p>
+    </div>
+    <div class="col-lg-4 book-info">
+      <h2><%= book.author %></h2>
+      <p><%= book.description %></p>
+      <p><%= book.createdBy.username %></p>
+    </div>
+    <div class="col-lg-4" >
+      <div id="map" data-lat="51.515113" data-lng="-0.072051" class="marker"></div>
+    </div>
   </div>
+
+</div>
+<div class="col-lg-6 book-info">
   <form class="editForm" method="POST" action="/books/<%= book.id %>">
     <input type="hidden" name="_method" value="PUT">
 
@@ -22,13 +31,10 @@
     <button class="u-full-width button-primary">Update</button>
 
   </form>
+</div>
 
 
-  <div class="row">
-    <div class="col-lg-4" >
-  <div id="map" data-lat="51.515113" data-lng="-0.072051" class="marker"></div>
-    </div>
-  </div>
+
 
 
 

@@ -29,9 +29,9 @@ $(() => {
     console.log(response);
   });
 
-
-  const $googleLng = $('#google-lng').text();
-  const $googleLat = $('#google-lat').text();
+  // 
+  // const $googleLng = $('#google-lng').text();
+  // const $googleLat = $('#google-lat').text();
 
 
 

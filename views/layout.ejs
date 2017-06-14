@@ -4,6 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <title>WDI Project 2</title>
+
   <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -21,20 +22,20 @@
   <script src="/js/map.js" charset="utf-8"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmku-0JwPZL_7NMRpFrMl5RU7osoQ73p8"></script>
 
-
+<link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
-
-
-
-
 </head>
 
 <body>
   <header>
     <nav>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/books">Books</a></li>
+        <li>
+          <a  href="/">Home</a>
+        </li>
+        <li>
+          <a  href="/books">Books</a>
+        </li>
 
         <% if (locals.isAuthenticated) { %>
 
@@ -45,17 +46,17 @@
           <a href="/books/new">Add a Marker</a>
           </li>
           <li >
-          <a class="nav-link" href="/profile">Profile</a>
+          <a  href="/profile">Profile</a>
           </li>
           <li >
-          <a class="nav-link" href="/logout">Logout</a>
+          <a  href="/logout">Logout</a>
           </li>
           <% } else { %>
-            <li >
-            <a class="nav-link" href="/login">Log In</a>
+            <li>
+            <a  href="/login">Log In</a>
             </li>
             <li>
-            <a class="nav-link" href="/register">Register</a>
+            <a  href="/register">Register</a>
             </li>
             <% } %>
 
