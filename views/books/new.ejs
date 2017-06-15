@@ -1,56 +1,48 @@
+
+<div class="page-title-new"><h2>Assign your book to a new location</h2>
+<h4>Type in the book info manually or find it in our database to assign it automatically</h4></div>
 <div class="row">
-  <div class="page-title"><h2>Assign your book to a new location</h2></div>
-  <div id="add-exp"><h4>Type in the book info manually or find it in our database to assign it automatically</h4></div>
-  <div class="col-md-5">
-    <form class="editForm" method="POST" action="/books">
-
-      <input class="editForm"type="hidden" name="lat">
-      <input class="editForm"type="hidden" name="lng">
-      <input class="editForm"type="hidden" name="googleBookId">
-
+  <div class="col-md-4 edit-form">
+    <form  method="POST" action="/books">
       <div class="new-form">
         <label for="image">Image</label>
         <input class="u-full-width" type="text" name="image" id="image">
       </div>
-
       <div class="new-form">
         <label for="title">Title</label>
         <input class="u-full-width" type="text" name="title" id="title" >
       </div>
-
       <div class="new-form">
         <label for="author">Author</label>
         <input class="u-full-width" type="text" name="author" id="author">
       </div>
-
       <div class="new-form">
-        <label for="description">Description</label>
+        <label for="description">Synopsis</label>
         <textarea class="u-full-width" name="description" id="description"></textarea>
       </div>
       <div class="new-form">
-        <label for="location-description">Describe where you left it</label>
+        <label for="location-description">Describe exactly where you left it so others can find it.</label>
         <textarea class="u-full-width" name="locationDesc"></textarea>
       </div>
-
+      <input type="hidden" name="lat">
+      <input type="hidden" name="lng">
+      <input type="hidden" name="googleBookId">
       <button class="button-primary u-full-width create-man">Create</button>
-
-      <div class="row">
-        <div class="col-lg-4">
-          <div id="map" data-lat="51.515113" data-lng="-0.072051" class="marker"></div>
-        </div>
-      </div>
     </form>
-
   </div>
-  <div class="col-md-4">
+  <div class="col-lg-6 col-md-4 search-box">
     <form class="new-form">
       <label>Search Books</label>
       <input type="text" name="q" value="books" placeholder="search books">
-
       <input type="submit" value="Go!">
     </form>
     <div class="book-results"></div>
   </div>
-
-
+</div>
+<div class="row">
+  <div class="col-lg-4 col-md-6 col-sm-10 map-div">
+    <p>Place a marker on its current location</p>
+    <div id="map" data-lat="51.515113" data-lng="-0.072051" class="marker"></div>
+  </div>
+</div>
 </div>

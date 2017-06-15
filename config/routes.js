@@ -7,7 +7,8 @@ const registrations = require('../controllers/registrations');
 const secureRoute   = require('../lib/secureRoute');
 const controllerOauth = require('../controllers/oauth');
 
-router.get('/', (req, res) => res.render('index'));
+router.get('/', (req, res) => res.render('statics/index'));
+router.get('/about', (req, res) => res.render('statics/about'));
 
 router.route('/oauth/instagram')
 .get(controllerOauth.instagram);
@@ -24,7 +25,7 @@ router.route('/books/:id')
 .get(bookController.show)
 .put(secureRoute, bookController.update)
 .delete(secureRoute, bookController.delete)
-.get(bookControllerProxy.proxy);///not needed i think
+.get(bookControllerProxy.proxy);
 
 router.get('/booksproxy', bookControllerProxy.proxy);
 
@@ -57,7 +58,7 @@ router.route('/books/:id/comments')
 router.route('/books/:id/comments/:commentId')
 .delete(secureRoute, bookController.deleteComment);
 
-
+router.all('*', (req, res) => res.render('statics/404'));
 
 
 

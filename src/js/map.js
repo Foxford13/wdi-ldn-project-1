@@ -18,9 +18,6 @@ $(() => {
     marker = new google.maps.Marker({ map,
       position: customMarkerLocation
     });
-
-
-
   }
 
   initMap();
@@ -34,7 +31,7 @@ $(() => {
   if($map.hasClass('marker')) {
     map.addListener('click', (e) => marker.setPosition(e.latLng));
 
-    $('.editForm').on('submit', (e) => {
+    $('.edit-form').on('submit', (e) => {
       e.preventDefault();
 
       const location = marker.getPosition().toJSON();
@@ -42,11 +39,9 @@ $(() => {
       $('[name=lat]').val(location.lat);
       $('[name=lng]').val(location.lng);
 
-    
+
       e.target.submit();
     });
-
-
 
   }
 

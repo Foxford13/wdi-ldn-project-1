@@ -1,15 +1,91 @@
 body {
+
   font-family: 'Acme', sans-serif;
   background-image:  url('http://www.onlygfx.com/wp-content/uploads/2016/06/simple-old-white-paper-1.jpg'),;
 
   background-size: cover;
+  .container {
+    width: 80%;
+    margin-bottom: 80px;
+  }
+  nav {
+    background-color: black;
+    height: 50px;
+    margin-bottom: 30px;
+    padding-right: 3%;
+    font-size: 30px;
+    ul {
+      margin: 0;
+      li {
+        padding-top: 5px;
+        display: inline-block;
+        margin-left: 15px;
+        line-height: 40px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: bold;
+
+        a {
+
+          color: white;
+          text-decoration: none;
+          margin: 0px;
+          transition: 0.2s ease;
+
+          &:focus, &:hover {
+            color: lighten(#404040, 10%);
+
+          }
 
 
+        }
+      }
+      li:nth-child(4){
+        float: right;
+      }
+      li:nth-child(5){
+        float: right;
+      }
+      li:hover {
+        padding-top: 2px;
+        padding-bottom: 8px;
+        background-color: white;
+
+
+      }
+    }
+  }
+
+  footer {
+    height:50px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    h4 {
+      margin: 0 auto;
+      width: 200px;
+    }
+    .footer-link {
+
+      margin-left: 25px;
+      clear: both;
+      color: white;
+      z-index: 10;
+      :hover{
+        color: white;
+      }
+    }
+  }
 }
-.container {
-  background-color: rgba(50,50,50, 0.3);
-  width: 80%;
-}
+
+
+
 
 form {
 
@@ -22,53 +98,9 @@ form {
     }
   }
 }
-.create-man {
-  border: 0px;
-
-}
 
 
-nav {
-  background-color: black;
-  height: 40px;
-  margin-bottom: 30px;
-  padding-right: 3%;
-  ul {
-    margin: 0;
-    li {
-      display: inline-block;
-      margin-left: 15px;
-      line-height: 40px;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-weight: bold;
 
-      a {
-        color: white;
-        text-decoration: none;
-
-        margin: 0px;
-        transition: 0.2s ease;
-
-        &:focus, &:hover {
-          color: lighten(#404040, 10%);
-        }
-
-
-      }
-    }
-    li:nth-child(3){
-      float: right;
-    }
-    li:nth-child(4){
-      float: right;
-    }
-    li:hover {
-      background-color: white;
-
-    }
-  }
-}
 
 
 ul {
@@ -83,6 +115,7 @@ ul {
 
 }
 
+
 .show-image img {
   max-height: 300px;
   margin-bottom: 50px;
@@ -92,6 +125,23 @@ ul {
   float:left;
   height: 300px;
 
+  li {
+    a{
+      color: black;
+    }
+
+    padding-left: 20%;
+    h3 {
+      padding-top: 10px;
+    }
+    div{
+      width: 150px;
+    }
+    img {
+      margin: 0 auto;
+    }
+  }
+
 
 }
 
@@ -100,10 +150,8 @@ ul {
 .book-results {
   height: 300px;
   width: 300px;
-  background-color: rgba(0, 0, 0, 0.1);
 
   overflow-y: scroll
-
 }
 
 
@@ -115,7 +163,6 @@ ul {
   margin-bottom: 20px;
 
 }
-
 
 .show-row {
   padding-top: 5%;
@@ -139,9 +186,65 @@ ul {
     border:none;
   }
 }
-footer {
-  background-color: rgba(0, 0, 0, 0.2);
-  height:200px;
-  
+.home-image {
+  width: 100px;
+}
+.show-book {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-top: 3%;
+}
+.create-man {
+  font-size: 25px;
+  color: white;
+  background-color: black;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+.search-box {
+  width: 10px;
+  button, input[type="submit"] {
+    font-size: 15px;
+    background-color: black;
+    color: white;
+    border: none;
 
+  }
+}
+.edit-form {
+  width: 455px;
+  width: 80%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 2%;
+  padding-top: 1%;
+  padding-bottom:1%;
+  margin-bottom: 2%;
+}
+.page-title-new {
+  h4, h2 {
+    padding-top: 1%;
+    padding-bottom: 1%;
+  }
+}
+.map-div {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 2%;
+  margin-bot: 1px;
+
+}
+.image-home-div {
+  padding-top: 10%;
+  width: 100%;
+  img {
+    width: 100%;
+  }
+}
+.show-book {
+  border-radius: 1%;
+}
+.populate-button {
+  
+  float: right;
 }

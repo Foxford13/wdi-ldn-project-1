@@ -1,15 +1,14 @@
-<h2>here goes a list of books. Possibly with a tiny map under each of them to show their location</h2>
-
-<h1>Index</h1>
-<div class="row">
-
-  <ul class="row index-page">
-    <% books.forEach((book) => { %>
-      <div class="col-lg-3 index-books">
-      <li class="six columns">
-      <div>  <a href="/books/<%= book.id %>"><img class="index-image" src="<%= book.image %>"></a></div>
-      <a href="/books/<%= book.id %>"><h3><%= book.title %></h3></a>
-      <h4><%= book.author %></h4>
+<h1>A list of books available for pickup</h1>
+<div class="row show-book">
+  <div class="col-lg-12 col-med-5">
+    <ul>
+      <% books.forEach((book) => { %>
+      <div class="col-lg-3 col-md-3 index-books">
+      <li>
+      <div>
+        <a href="/books/<%= book.id %>"><img class="index-image" src="<%= book.image %>"></a></div>
+        <a href="/books/<%= book.id %>"><h3><%= book.title %></h3></a>
+        <h4><%= book.author %></h4>
 
       </div>
       </li>

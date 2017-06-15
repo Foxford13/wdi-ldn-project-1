@@ -18,9 +18,7 @@ function booksCreate(req, res, next) {
   .create(req.body)
   .then(() =>  res.redirect('/books'))
   .catch((err) => {
-    if(err.name === 'ValidationError') {
-      return res.badRequest('/books/new', err.toString());
-    }
+    if(err.name === 'ValidationError') return res.badRequest(`/books/new`, 'Need more info mate. Location descriptio, pointer the map and a compass');
     next(err);
   });
 }
@@ -28,43 +26,40 @@ function booksCreate(req, res, next) {
 
 function booksNew(req, res) {
 
-  res.render('books/new');
+  return res.render('books/new');
 
 }
 
-function booksShow(req, res) {
+function booksShow(req, res, next) {
   Book
   .findById(req.params.id)
   .populate('createdBy comments.createdBy')
   .exec()
   .then((book) => {
-    if(!book) return res.status(404).end('Not Found');
-    res.render('books/show', {book});
+    if(!book) return res.notFound();
+    return res.render('books/show', { book });
   })
-  .catch((err) => {
-    res.status(500).render('error', { err });
-  });
+  .catch(next);
 
 
 }
 
-function booksEdit(req, res) {
+function booksEdit(req, res, next) {
   Book
   .findById(req.params.id)
   .exec()
   .then((book) => {
     if(!book) return res.redirect();
-    // if(!book.belongsTo(req.user)) return res.unauthorized(`/books/${book.id}`, 'You do not have permission to edit that resource');
+
     return res.render('books/edit', { book });
   })
-  .catch((err) => {
-    res.status(500).render('error', {err});
-  });
+  .catch(next);
+
 }
 
 
 
-function booksUpdate(req, res) {
+function booksUpdate(req, res, next) {
   console.log(req.body);
 
   Book
@@ -81,10 +76,16 @@ function booksUpdate(req, res) {
     res.redirect(`/books/${book.id}`);
   })
   .catch((err) => {
-    res.status(500).render('error', { err } );
+    if(err.name === 'ValidationError') return res.badRequest(`/books/${req.params.id}/edit`, 'You suck!');
+    next(err);
   });
 }
-function booksDelete(req, res) {
+
+
+
+
+
+function booksDelete(req, res, next) {
   Book
   .findById(req.params.id)
   .exec()
@@ -92,12 +93,8 @@ function booksDelete(req, res) {
     if(!book) return res.status(404).end('Not Found');
     return book.remove();
   })
-  .then(() => {
-    res.redirect('/books');
-  })
-  .catch((err) => {
-    res.status(500).render('error', { err });
-  });
+  .then(() => res.redirect('/posts'))
+  .catch(next);
 
 }
 function createCommentRoute(req, res, next) {

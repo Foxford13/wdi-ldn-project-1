@@ -1,17 +1,22 @@
 const express = require('express');
 const morgan         = require('morgan');
 const expressLayouts = require('express-ejs-layouts');
+const mongoose       = require('mongoose');
+mongoose.Promise     = require('bluebird');
+const session        = require('express-session');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const authenticateUser = require('./lib/authenticateUser');
-const mongoose       = require('mongoose');
-mongoose.Promise     = require('bluebird');
+const errorHandler = require('./lib/errorHandler');
+const customResponses = require('./lib/customResponses');
+
 const routes         = require('./config/routes');
-const session        = require('express-session');
+
 const flash          = require('express-flash');
-
-
 const { port, dbURI, secret} = require('./config/environment');
+
+
+
 
 
 
@@ -43,8 +48,10 @@ app.use(methodOverride(function (req) {
     return method;
   }
 }));
-
+app.use(customResponses);
 app.use(authenticateUser);
+
+app.use(errorHandler);
 
 // app.get('/', (req, res) => res.render('index'));
 
