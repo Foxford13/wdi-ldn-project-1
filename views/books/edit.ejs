@@ -1,7 +1,7 @@
 <h1>Change the location of the book</h1>
 <div class="row">
 
-  <h2 data-title="<%= JSON.stringify({title: book.title} ) %>" data-location="<%= JSON.stringify({lat: book.locations[book.locations.length - 1].lat, lng: book.locations[book.locations.length - 1].lng } ) %>"></h2>
+  <h2 data-location="<%= JSON.stringify({lat: book.locations[book.locations.length - 1].lat, lng: book.locations[book.locations.length - 1].lng } ) %>"></h2>
 
   <div class="row show-row">
     <div class="show-image">

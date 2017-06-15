@@ -31,7 +31,9 @@ function booksCreate(req, res) {
 
 
 function booksNew(req, res) {
-  res.render('books/new');
+
+    res.render('books/new')
+
 }
 
 function booksShow(req, res) {

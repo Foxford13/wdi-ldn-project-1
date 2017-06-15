@@ -2,11 +2,11 @@
   <div class="page-title"><h2>Assign your book to a new location</h2></div>
   <div id="add-exp"><h4>Type in the book info manually or find it in our database to assign it automatically</h4></div>
   <div class="col-md-5">
-    <form class="edit-form" method="POST" action="/books">
-      
-      <input type="hidden" name="lat">
-      <input type="hidden" name="lng">
-      <input type="hidden" name="googleBookId">
+    <form class="editForm" method="POST" action="/books">
+
+      <input class="editForm"type="hidden" name="lat">
+      <input class="editForm"type="hidden" name="lng">
+      <input class="editForm"type="hidden" name="googleBookId">
 
       <div class="new-form">
         <label for="image">Image</label>
@@ -37,7 +37,11 @@
 
       <button class="button-primary u-full-width create-man">Create</button>
 
-
+      <div class="row">
+        <div class="col-lg-4">
+          <div id="map" data-lat="51.515113" data-lng="-0.072051" class="marker"></div>
+        </div>
+      </div>
     </form>
 
   </div>
@@ -50,10 +54,6 @@
     </form>
     <div class="book-results"></div>
   </div>
-  <div class="row">
-    <div class="col-lg-4">
-      <div id="map" data-lat="51.515113" data-lng="-0.072051" class="marker"></div>
-    </div>
-  </div>
+
 
 </div>
