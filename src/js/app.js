@@ -29,7 +29,7 @@ $(() => {
     console.log(response);
   });
 
-  // 
+  //
   // const $googleLng = $('#google-lng').text();
   // const $googleLat = $('#google-lat').text();
 
@@ -40,8 +40,7 @@ $(() => {
 
 
   $.ajax({
-
-    url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=51.5074,0.1278&key=AIzaSyD_4S64vxXlmpR2d47IEgHCj0HYPbT6p9c`,
+    url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=51.5074,0.1278&key=${process.env.GOOGLE_MAPS_KEY}`,
     method: 'GET',
     data: title,
     json: true

@@ -4,11 +4,6 @@ const Book = require('../models/book');
 
 function booksIndex(req, res, next) {
 
-  // Book
-  // .aggregate([{ $group: { _id: '$googleBookId' } }, { $project: { title: '$title' } }])
-  // .exec()
-  // .then((books) => console.log(books));
-
   Book
   .find()
   .populate('createdBy')
@@ -16,23 +11,24 @@ function booksIndex(req, res, next) {
   .catch(next);
 
 }
-function booksCreate(req, res) {
+function booksCreate(req, res, next) {
   req.body.createdBy = req.user;
 
   Book
   .create(req.body)
-  .then(() => {
-    res.redirect('/books');
-  })
+  .then(() =>  res.redirect('/books'))
   .catch((err) => {
-    res.status(500).render('error', { err });
+    if(err.name === 'ValidationError') {
+      return res.badRequest('/books/new', err.toString());
+    }
+    next(err);
   });
 }
 
 
 function booksNew(req, res) {
 
-    res.render('books/new')
+  res.render('books/new');
 
 }
 

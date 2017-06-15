@@ -5,11 +5,13 @@ const bookControllerProxy = require('../controllers/booksProxy');
 const sessions = require('../controllers/sessions');
 const registrations = require('../controllers/registrations');
 const secureRoute   = require('../lib/secureRoute');
+const controllerOauth = require('../controllers/oauth');
 
 router.get('/', (req, res) => res.render('index'));
 
-// router.route('/')
-// .get(bookController.index);
+router.route('/oauth/instagram')
+.get(controllerOauth.instagram);
+
 
 router.route('/books')
 .get(bookController.index)
@@ -19,11 +21,10 @@ router.route('/books/new')
 .get(secureRoute, bookController.new);
 
 router.route('/books/:id')
-
 .get(bookController.show)
 .put(secureRoute, bookController.update)
 .delete(secureRoute, bookController.delete)
-.get(bookControllerProxy.proxy);
+.get(bookControllerProxy.proxy);///not needed i think
 
 router.get('/booksproxy', bookControllerProxy.proxy);
 

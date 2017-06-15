@@ -1,12 +1,15 @@
 body {
-font-family: 'Acme', sans-serif;
+  font-family: 'Acme', sans-serif;
   background-image:  url('http://www.onlygfx.com/wp-content/uploads/2016/06/simple-old-white-paper-1.jpg'),;
 
   background-size: cover;
 
 
 }
-
+.container {
+  background-color: rgba(50,50,50, 0.3);
+  width: 80%;
+}
 
 form {
 
@@ -85,7 +88,7 @@ ul {
   margin-bottom: 50px;
 }
 .index-books {
-  padding-left: 5%;
+  margin: 0 auto;
   float:left;
   height: 300px;
 
@@ -102,16 +105,8 @@ ul {
   overflow-y: scroll
 
 }
-#add-exp {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  color: rgba(0, 0, 0, 0.4);
-}
-.new-form {
-  margin-bottom: 20px;
 
 
-}
 
 #map {
   height: 300px;
@@ -121,10 +116,7 @@ ul {
 
 }
 
-footer {
-  background-color: rgba(0, 0, 0, 0.2);
 
-}
 .show-row {
   padding-top: 5%;
   padding-left: 5%;
@@ -140,10 +132,16 @@ footer {
 
 }
 .comment-box-main {
-margin-left: 25%;
-button {
-  clear: both;
- display: block;
-  border:none;
+  margin-left: 25%;
+  button {
+    clear: both;
+    display: block;
+    border:none;
+  }
 }
+footer {
+  background-color: rgba(0, 0, 0, 0.2);
+  height:200px;
+  
+
 }

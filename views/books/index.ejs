@@ -5,16 +5,13 @@
 
   <ul class="row index-page">
     <% books.forEach((book) => { %>
-      <div class="col-lg-4 index-books">
+      <div class="col-lg-3 index-books">
       <li class="six columns">
       <div>  <a href="/books/<%= book.id %>"><img class="index-image" src="<%= book.image %>"></a></div>
       <a href="/books/<%= book.id %>"><h3><%= book.title %></h3></a>
       <h4><%= book.author %></h4>
 
       </div>
-
-
-
       </li>
       <% }); %>
     </ul>

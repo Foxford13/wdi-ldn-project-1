@@ -20,13 +20,14 @@ function registrationsShow(req, res) {
   return res.render('registrations/show');
 }
 function registrationsDelete(req, res, next) {
-  req.user
-  .remove()
+  User
+  .remove(req.user)
   .then(() => {
     req.session.regenerate(() => res.unauthorized('/', 'Your account has been deleted'));
   })
   .catch(next);
 }
+
 
 module.exports = {
   new: registrationsNew,
