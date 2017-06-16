@@ -6,11 +6,7 @@
     <div class="col-lg-4">
       <div class="show-image"><img src="<%= book.image %>"></div>
       <h2 data-title="<%= JSON.stringify({title: book.title} ) %>" data-location="<%= JSON.stringify({lat: book.locations[book.locations.length - 1].lat, lng: book.locations[book.locations.length - 1].lng } ) %>"><%= book.title %></h2>
-      <div class="coordinates">
-        <% for (var i = 0; i < book.locations.length; i++){ %>
-          <div class='google-cor'><%= `${book.locations[i].lat},${book.locations[i].lng};` %></div>
-          <% }; %>
-        </div>
+
         <h2><%= book.author %></h2>
         <p><%= book.description %></p>
         <p>Created by:<%= book.createdBy.username %></p>
@@ -25,6 +21,12 @@
         </div>
         <div class="col-4-lg">
           <div id="map" data-lat="51.515113" data-lng="-0.072051"></div>
+          <div class="coordinates">
+            <p>Where has it been already?</p>
+            <% for (var i = 0; i < book.locations.length; i++){ %>
+              <div class='google-cor'><p><%= `${book.locations[i].lat},${book.locations[i].lng};` %></p></div>
+              <% }; %>
+            </div>
           <h5> Detailed description of its location</h5>
           <p><%= book.locationDesc %></p>
           <div class="col-lg-4 comment-box-main">
