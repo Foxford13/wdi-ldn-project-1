@@ -1,20 +1,16 @@
 $(() => {
-  console.log('working');
-
-
 
   const title = $('h2').data('title');
   const $results = $('.book-results');
-  // console.log(title);
+
 
   $results.on('click', 'button', function() {
-    console.log($(this).data('description'));
 
     $('#image').val($(this).data('image'));
     $('#title').val($(this).data('title'));
     $('#author').val($(this).data('authors'));
     $('#google-id').val($(this).data('id'));
-    $('#description').append($(this).data('description'));
+    $('#description').val($(this).data('description'));
   });
 
   $.ajax({
@@ -23,11 +19,54 @@ $(() => {
     method: 'GET',
     data: title,
     json: true
-  })
-
-  .done((response)  => {
-    console.log(response);
   });
+
+
+//// Im keeping that code  (╯°□°）╯︵ ┻━┻
+
+  //
+  // $.ajax({
+  //
+  //   url: `/books/show`,
+  //   method: 'GET',
+  //   data: title
+  //
+  // })
+  // .done((response)  => {
+  //   console.log(response.results[0].formatted_address);
+  // });
+
+
+
+  // const $googleCor = $('.google-cor').text();
+
+  // console.log($googleCor);
+
+  // function workYouFuck() {
+  //   const arrayO = $googleCor.split(';');
+  //
+  //   // console.log(arrayO[2]);
+  //   for (var i = 0; i< arrayO.length; i++) {
+  //     console.log($.get((`https://maps.googleapis.com/maps/api/geocode/json?latlng=${arrayO[i]}&key=AIzaSyD_4S64vxXlmpR2d47IEgHCj0HYPbT6p9c`)));
+  //     // $.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${arrayO[i]}&key=AIzaSyD_4S64vxXlmpR2d47IEgHCj0HYPbT6p9c`)
+  //     // .done((adress) => $.each(console.log(adress.responseJSON)));
+  //   }
+  //
+  // }
+  // workYouFuck();
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -36,13 +75,13 @@ $(() => {
 
 
   function addBook(i, book) {
-    $results.append(`
-      <div class="populate-for col-lg-10"><a href="${book.volumeInfo.infoLink}">${book.volumeInfo.title}</a>
-      <p>${book.volumeInfo.authors}</p></div>
-      <button class="populate-button" data-image="${book.volumeInfo.imageLinks.smallThumbnail}" data-title="${book.volumeInfo.title}" data-authors="${book.volumeInfo.authors}" data-description="${book.volumeInfo.description}"
-      data-id="${book.id}">Populate</button>
-      `);
 
+    $results.append(`
+      <table><tr><td><a href="${book.volumeInfo.infoLink}">${book.volumeInfo.title}</a>
+      <p class="author-name">${book.volumeInfo.authors}</p></td></tr><tr><button class="populate-button" data-image="${book.volumeInfo.imageLinks.smallThumbnail}" data-title="${book.volumeInfo.title}" data-authors="${book.volumeInfo.authors}" data-description="${book.volumeInfo.description}"
+      data-id="${book.id}">Populate</button></tr></table>
+
+      `);
     }
 
     function getBooks(e) {
@@ -51,7 +90,7 @@ $(() => {
 
       if(!$(this).is('.book-results')) {
         emptyBooks();
-        console.log(searchInput);
+
       }
       // $.get(`/booksproxy${+}?q=${searchInput}`)
       $.get(`/booksproxy?q=${searchInput}`)

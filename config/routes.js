@@ -6,9 +6,12 @@ const sessions = require('../controllers/sessions');
 const registrations = require('../controllers/registrations');
 const secureRoute   = require('../lib/secureRoute');
 const controllerOauth = require('../controllers/oauth');
+const googleProxy = require('../controllers/googleProxy');
 
 router.get('/', (req, res) => res.render('statics/index'));
 router.get('/about', (req, res) => res.render('statics/about'));
+
+router.get('/books/show', googleProxy.proxy);
 
 router.route('/oauth/instagram')
 .get(controllerOauth.instagram);
