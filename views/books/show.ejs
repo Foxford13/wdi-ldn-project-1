@@ -1,4 +1,4 @@
-  <%# please dont kill me didnt have time to indent properly%>
+<%# please dont kill me didnt have time to indent properly%>
 <h3> Where's my book at?</h3>
 <div class="row show-row">
 
@@ -23,40 +23,37 @@
           </form>
           <% } %>
         </div>
-      <div class="col-4-lg">
-      <div id="map" data-lat="51.515113" data-lng="-0.072051"></div>
-       <h5> Detailed description of its location</h5>
+        <div class="col-4-lg">
+          <div id="map" data-lat="51.515113" data-lng="-0.072051"></div>
+          <h5> Detailed description of its location</h5>
           <p><%= book.locationDesc %></p>
-
-    </div>
-  </div>
-      <div class="row">
-    <div class="col-lg-4 comment-box-main">
-      <% if(locals.isAuthenticated) { %>
-        <section>
-        <form method="POST" action="/books/<%= book.id %>/comments">
-        <textarea name="content" id="content" placeholder="Comment"></textarea>
-        <button class="button-show">Comment</button>
-        </form>
-        </section>
-        <% } %>
-
-        <section>
-          <h4>Comments</h4>
-          <% book.comments.forEach((comment) => { %>
-            <p><%= comment.content %></p>
-            <small><%= comment.createdBy.username %></small>
-
-            <% if(locals.isAuthenticated && comment.belongsTo(user)) { %>
-              <form method="POST" action="/books/<%= book.id %>/comments/<%= comment.id %>">
-              <input type="hidden" name="_method" value="DELETE">
-              <button class="button-show">Delete</button>
+          <div class="col-lg-4 comment-box-main">
+            <% if(locals.isAuthenticated) { %>
+              <section>
+              <form method="POST" action="/books/<%= book.id %>/comments">
+              <textarea name="content" id="content" placeholder="Comment"></textarea>
+              <button class="button-show">Comment</button>
               </form>
+              </section>
               <% } %>
-              <% }) %>
-            </section>
+
+              <section>
+                <h4>Comments</h4>
+                <% book.comments.forEach((comment) => { %>
+                  <p><%= comment.content %></p>
+                  <small><%= comment.createdBy.username %></small>
+
+                  <% if(locals.isAuthenticated && comment.belongsTo(user)) { %>
+                    <form method="POST" action="/books/<%= book.id %>/comments/<%= comment.id %>">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="button-show">Delete</button>
+                    </form>
+                    <% } %>
+                    <% }) %>
+                  </section>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
