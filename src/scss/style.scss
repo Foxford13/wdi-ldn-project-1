@@ -1,7 +1,8 @@
 body {
 
   font-family: 'Acme', sans-serif;
-  background-image:  url('http://www.onlygfx.com/wp-content/uploads/2016/06/simple-old-white-paper-1.jpg'),;
+  // background-image:  url('http://www.onlygfx.com/wp-content/uploads/2016/06/simple-old-white-paper-1.jpg');
+  background-color: #fffcee;
 
   background-size: cover;
   .container {
@@ -10,23 +11,26 @@ body {
   }
   nav {
     background-color: black;
-    height: 50px;
-    margin-bottom: 30px;
-    padding-right: 3%;
-    font-size: 30px;
+    height: 20px;
+
+    padding-right: 15px;
+    font-size: 16px;
+
     ul {
       margin: 0;
       li {
-        padding-top: 5px;
+
         display: inline-block;
-        margin-left: 15px;
-        line-height: 40px;
+
+        margin-top: 0px;
+        // line-height: 40px;
         text-transform: uppercase;
         letter-spacing: 3px;
         font-weight: bold;
 
         a {
-
+          padding-left: 20px;
+          padding-right: 20px;
           color: white;
           text-decoration: none;
           margin: 0px;
@@ -34,6 +38,8 @@ body {
 
           &:focus, &:hover {
             color: lighten(#404040, 10%);
+            text-decoration: none;
+
 
           }
 
@@ -46,9 +52,10 @@ body {
       li:nth-child(5){
         float: right;
       }
-      li:hover {
-        padding-top: 2px;
-        padding-bottom: 8px;
+      a:hover {
+        padding-top: 3px;
+        padding-bottom: 0px;
+
         background-color: white;
 
 
@@ -57,7 +64,7 @@ body {
   }
 
   footer {
-    height:50px;
+    height: 10px;
     position: fixed;
     right: 0;
     bottom: 0;
@@ -66,7 +73,8 @@ body {
     background-color: rgb(0, 0, 0);
     text-align: center;
     color: white;
-    font-size: 20px;
+    font-size: 13px;
+
     h4 {
       margin: 0 auto;
       width: 200px;
@@ -82,22 +90,23 @@ body {
       }
     }
   }
+
+}
+
+#twitter {
+  background-color: white;
+  width: 32px;
+  height: 32px;
+  display: block;
+  text-indent: -9999px;
+  background-image: url('https://image.freepik.com/free-icon/twitter-logo_318-40209.jpg');
+  background-repeat: no-repeat;
 }
 
 
 
 
-form {
 
-  margin-bottom: 15px;
-  .new-form {
-    padding-left: 10px;
-    margin: 0 auto;
-    label {
-      width: 150px;
-    }
-  }
-}
 
 
 
@@ -213,15 +222,7 @@ ul {
 
   }
 }
-.edit-form {
-  width: 455px;
-  width: 80%;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 2%;
-  padding-top: 1%;
-  padding-bottom:1%;
-  margin-bottom: 2%;
-}
+
 .page-title-new {
   h4, h2 {
     padding-top: 1%;
