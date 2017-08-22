@@ -22,7 +22,7 @@ $(() => {
   });
 
 
-//// Im keeping that code  (╯°□°）╯︵ ┻━┻
+  //// Im keeping that code  (╯°□°）╯︵ ┻━┻
 
   //
   // $.ajax({
@@ -42,7 +42,7 @@ $(() => {
 
   // console.log($googleCor);
 
-  // function workYouFuck() {
+  // function work() {
   //   const arrayO = $googleCor.split(';');
   //
   //   // console.log(arrayO[2]);
@@ -53,7 +53,7 @@ $(() => {
   //   }
   //
   // }
-  // workYouFuck();
+  // work();
 
 
 
@@ -101,5 +101,5 @@ $(() => {
       $results.empty();
     }
 
-
+    
   });
